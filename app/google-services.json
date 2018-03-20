@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "592380363226",
+    "firebase_url": "https://easygo-1521375923558.firebaseio.com",
+    "project_id": "easygo-1521375923558",
+    "storage_bucket": "easygo-1521375923558.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592380363226:android:ac3b3c1e9ced1faa",
+        "android_client_info": {
+          "package_name": "com.example.sharangoud.uploaddata"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592380363226-bm0i514m11ifnijjrb0b77e5njijh24a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sharangoud.uploaddata",
+            "certificate_hash": "0765f9024136beec71482f564740ed5939c5e021"
+          }
+        },
+        {
+          "client_id": "592380363226-9dfnakvv0trjopbe9q05b9haib92e05h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxaYRyf4r2nUk8hAtGp9R0nX6CxXDa0Dg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592380363226-9dfnakvv0trjopbe9q05b9haib92e05h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592380363226:android:1dda084d899d6c9f",
+        "android_client_info": {
+          "package_name": "com.android.example.easygo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592380363226-5jcgkrdq54oss69hts1n22564kquumhp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.example.easygo",
+            "certificate_hash": "f9bb7fa1bb6c97033f3e93f3bd756901bdf3ede4"
+          }
+        },
+        {
+          "client_id": "592380363226-9dfnakvv0trjopbe9q05b9haib92e05h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxaYRyf4r2nUk8hAtGp9R0nX6CxXDa0Dg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592380363226-9dfnakvv0trjopbe9q05b9haib92e05h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
