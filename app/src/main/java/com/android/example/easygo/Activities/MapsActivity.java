@@ -57,6 +57,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         routeNumber = getIntent().getStringExtra("rn");
+        Log.i("rn", routeNumber);
 
         mRef = FirebaseDatabase.getInstance().getReference();
     }
@@ -82,7 +83,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onLocationChanged(Location location) {
 
                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
 
             }
 
@@ -109,7 +110,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         } else {
 
-            mMap.clear();
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 10, locationListener);
 
             final float[] results = new float[1];
@@ -120,14 +120,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             final BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.ic_directions_bus_black_24dp);
 
             mMap.addMarker(new MarkerOptions().position(currentLocation).title("User Location"));
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 16));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 13));
 
             DatabaseReference devRef = mRef.child("devices");
             devRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
+                    Log.i("ds", dataSnapshot.toString());
                     for(final DataSnapshot ds : dataSnapshot.getChildren()) {
-                        if(ds.child("route no").getValue(double.class)==Double.parseDouble(routeNumber)) {
+                        Log.i("ds", ds.toString());
+                        if(ds.child("route no").getValue(String.class).equals(routeNumber)) {
+                            Log.i("rne", routeNumber);
                             if(ds.child("status").getValue(String.class).equals("active")) {
                                 final double[] lat = new double[1];
                                 final double[] lon = new double[1];
@@ -138,7 +141,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                         lat[0] = Double.parseDouble(dataSnapshot.getValue(String.class));
                                         Log.i("lat", lat[0] + "");
                                         DatabaseReference devRefY = mRef.child(ds.child("id").getValue(Integer.class).toString()+"y");
-                                        final double finalLon = lon[0];
                                         devRefY.addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -149,10 +151,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                                 Log.i("latlng", busLoc + "");
                                                 Location.distanceBetween(currentLoc.getLatitude(), currentLoc.getLongitude(), lat[0], lon[0], results);
                                                 Log.i("distance", "" + results[0]);
-                                                if(results[0] < 2000) {
-                                                    mMap.clear();
+                                                if(results[0] < 1500) {
                                                     mMap.addMarker(new MarkerOptions().position(currentLocation).title("User Location"));
                                                     Marker m = mMap.addMarker(new MarkerOptions().position(busLoc).title(routeNumber).icon(icon));
+                                                    Log.i("rn", routeNumber);
+                                                    m.showInfoWindow();
                                                     m.setPosition(busLoc);
                                                 }
                                             }
